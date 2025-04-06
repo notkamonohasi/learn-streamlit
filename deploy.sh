@@ -35,4 +35,6 @@ gcloud run deploy ${PROJECT_NAME} \
     --platform managed \
     --region asia-northeast1 \
     --allow-unauthenticated \
-    --set-env-vars=$(get_env_vars)
+    --set-env-vars=$(get_env_vars) \
+    --min-instances 0 \
+    --max-instances 1
