@@ -1,14 +1,14 @@
-import os
-
 import streamlit as st
+from Streamlit.login import login
+from Streamlit.main import main
 
-# タイトル
-st.title("Streamlit サンプルアプリ")
+if __name__ == "__main__":
+    if "logged_in" not in st.session_state:
+        st.session_state["logged_in"] = False
 
-# テキスト入力
-name = st.text_input("あなたの名前を入力してください:")
+    st.title("streamlit test")
 
-# 挨拶メッセージ
-if name:
-    st.write(f"こんにちは、{name}さん！ようこそ 🎉")
-    st.write(f"{os.environ=}")
+    if st.session_state.get("logged_in") is False:
+        login()
+    else:
+        main()
